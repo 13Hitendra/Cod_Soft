@@ -1,18 +1,19 @@
 import java.util.Scanner;
+
 public class Atm_Interface {
     public static void main(String[] args) {
         double initialBalance = 1000;
 
         ATM atm = new ATM(initialBalance);
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         while (true) {
             atm.displayMenu();
             System.out.print("Enter your option: ");
-            int option = scanner.nextInt();
+            int option = sc.nextInt();
             atm.processOption(option);
             System.out.println();
-        }
+        }  
     }
 }
 
@@ -34,14 +35,14 @@ class ATM {
     public void processOption(int option) {
         switch (option) {
             case 1:
-                checkBalance();
-                break;
+                   checkBalance();
+                     break;
             case 2:
-                withdraw();
-                break;
+                    withdraw();
+                      break;
             case 3:
-                deposit();
-                break;
+                     deposit();
+                       break;
             case 4:
                 System.out.println("Exiting...");
                 System.exit(0);
@@ -52,26 +53,29 @@ class ATM {
     }
 
     private void checkBalance() {
-        System.out.println("Current balance: $" + balance);
+        System.out.println("Current balance: INR " + balance);
     }
 
     private void withdraw() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the amount to withdraw: $");
+        System.out.print("Enter the amount to withdraw: INR ");
         double amount = scanner.nextDouble();
         if (amount > balance) {
             System.out.println("Insufficient balance");
         } else {
             balance -= amount;
-            System.out.println("Withdrawal successful. Remaining balance: $" + balance);
+            System.out.println("Withdrawal successful. Remaining balance: INR " + balance);
         }
+        
     }
 
     private void deposit() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the amount to deposit: $");
-        double amount = scanner.nextDouble();
-        balance += amount;
-        System.out.println("Deposit successful. Current balance: $" + balance);
+        Scanner scanner = new Scanner(System.in) ;
+            System.out.print("Enter the amount to deposit: INR ");
+            double amount = scanner.nextDouble();
+            balance += amount;
+        
+        System.out.println("Deposit successful. Current balance: INR " + balance);
     }
+    
 }
